@@ -26,6 +26,11 @@ export const strings = {
     lineGreen: 'Green Line',
     linePurple: 'Purple Line',
     selectStation: 'Select station...',
+    transferStationsTitle: 'Transfer Stations',
+    transferStationsDesc: 'Stations highlighted in amber indicate transfer points between different lines.',
+    redLineDesc: '13 stations across the main east-west corridor',
+    greenLineDesc: '19 stations connecting west to east zones',
+    purpleLineDesc: '5 stations on the recent northern expansion',
   },
   az: {
     navMap: 'Xəritəmiz',
@@ -52,5 +57,10 @@ export const strings = {
     lineGreen: 'Yaşıl Xətt',
     linePurple: 'Bənövşəyi Xətt',
     selectStation: 'Stansiya seçin...',
+    transferStationsTitle: 'Keçid Stansiyaları',
+    transferStationsDesc: 'Kəhrəba rəngdə vurğulanan stansiyalar müxtəlif xətlər arasında keçid nöqtələrini göstərir.',
+    redLineDesc: 'Əsas şərq-qərb dəhlizi boyunca 13 stansiya',
+    greenLineDesc: 'Qərbdən şərqə zonaları birləşdirən 19 stansiya',
+    purpleLineDesc: 'Son şimal genişlənməsində 5 stansiya',
   }
 };

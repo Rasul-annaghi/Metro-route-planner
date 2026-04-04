@@ -45,9 +45,9 @@ export const MetroMap: React.FC = () => {
           <div className="w-12 h-12 rounded-full bg-[#FFB300]/20 flex items-center justify-center mb-4">
             <span className="text-[#FFB300] text-xl">⇄</span>
           </div>
-          <h3 className="text-lg font-bold text-gray-900 mb-2">Transfer Stations</h3>
+          <h3 className="text-lg font-bold text-gray-900 mb-2">{t.transferStationsTitle}</h3>
           <p className="text-sm text-gray-600">
-            Stations highlighted in amber indicate transfer points between different lines.
+            {t.transferStationsDesc}
           </p>
         </div>
       </div>

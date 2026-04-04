@@ -68,7 +68,7 @@ export const MetroMapDetail: React.FC = () => {
                 <div className="w-4 h-4 rounded-full bg-red-500"></div>
                 <h3 className="text-lg font-bold text-red-600">{t.lineRed}</h3>
               </div>
-              <p className="text-sm text-gray-600">27 stations across main corridor</p>
+              <p className="text-sm text-gray-600">{t.redLineDesc}</p>
             </div>
             
             <div className="bg-white border-2 border-green-300 rounded-xl p-6">
@@ -76,7 +76,7 @@ export const MetroMapDetail: React.FC = () => {
                 <div className="w-4 h-4 rounded-full bg-green-500"></div>
                 <h3 className="text-lg font-bold text-green-600">{t.lineGreen}</h3>
               </div>
-              <p className="text-sm text-gray-600">Branch line connecting east zones</p>
+              <p className="text-sm text-gray-600">{t.greenLineDesc}</p>
             </div>
             
             <div className="bg-white border-2 border-purple-300 rounded-xl p-6">
@@ -84,7 +84,7 @@ export const MetroMapDetail: React.FC = () => {
                 <div className="w-4 h-4 rounded-full bg-purple-500"></div>
                 <h3 className="text-lg font-bold text-purple-600">{t.linePurple}</h3>
               </div>
-              <p className="text-sm text-gray-600">Recent expansion connecting north areas</p>
+              <p className="text-sm text-gray-600">{t.purpleLineDesc}</p>
             </div>
           </div>
         </div>

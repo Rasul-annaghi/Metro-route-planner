@@ -207,8 +207,10 @@ export function findFastestRoute(fromId: string, toId: string): RouteResult | nu
       }
 
       for (let i = 0; i < rawPath.length; i++) {
-        const [stId, lineStr] = rawPath[i].node.split('_');
-        const line = lineStr as Line;
+        const nodeStr = rawPath[i].node;
+        const lastUnderscore = nodeStr.lastIndexOf('_');
+        const stId = nodeStr.substring(0, lastUnderscore);
+        const line = nodeStr.substring(lastUnderscore + 1) as Line;
         
         if (i === 0) {
           path.push({ stationId: stId, line, type: 'start', time: 0 });
