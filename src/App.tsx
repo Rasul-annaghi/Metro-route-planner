@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-[#0A0F2C] font-sans selection:bg-[#1E90FF]/30">
+      <div className="min-h-screen bg-white font-sans selection:bg-[#1E90FF]/30">
         <Navbar />
         <main>
           <Hero onRouteFound={handleRouteFound} />
@@ -28,7 +28,7 @@ export default function App() {
           <MetroMap />
           <History />
         </main>
-        <footer className="py-8 text-center text-gray-500 text-sm border-t border-white/10 mt-12">
+        <footer className="py-8 text-center text-gray-600 text-sm border-t border-gray-200 mt-12">
           &copy; {new Date().getFullYear()} Baku Metro Route Planner. All rights reserved.
         </footer>
       </div>

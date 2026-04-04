@@ -18,9 +18,9 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 text-center"
+          className="bg-red-100 border-2 border-red-400 rounded-2xl p-6 text-center"
         >
-          <p className="text-red-400 font-medium">{error}</p>
+          <p className="text-red-700 font-semibold text-lg">{error}</p>
         </motion.div>
       </section>
     );
@@ -39,10 +39,10 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
 
   const getLineTextColor = (line: Line) => {
     switch (line) {
-      case 'red': return 'text-red-400';
-      case 'green': return 'text-green-400';
-      case 'purple': return 'text-purple-400';
-      default: return 'text-gray-400';
+      case 'red': return 'text-red-600';
+      case 'green': return 'text-green-600';
+      case 'purple': return 'text-purple-600';
+      default: return 'text-gray-600';
     }
   };
 
@@ -51,26 +51,26 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+        className="bg-blue-50 border-2 border-[#1E90FF] rounded-2xl overflow-hidden shadow-xl"
       >
-        <div className="p-6 sm:p-8 border-b border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <h2 className="text-2xl font-bold text-white">{t.routeResultTitle}</h2>
-          <div className="flex items-center gap-4 bg-[#0A0F2C] px-4 py-2 rounded-lg border border-white/10">
+        <div className="p-8 border-b-2 border-blue-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gradient-to-r from-blue-50 to-white">
+          <h2 className="text-3xl font-bold text-gray-900">{t.routeResultTitle}</h2>
+          <div className="flex items-center gap-4 bg-white px-6 py-3 rounded-lg border-2 border-[#1E90FF] shadow-sm">
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5 text-[#1E90FF]" />
-              <span className="text-white font-semibold">{result.totalTime} {t.minutes}</span>
+              <span className="text-gray-900 font-bold text-lg">{result.totalTime} {t.minutes}</span>
             </div>
-            <div className="w-px h-4 bg-white/20"></div>
-            <div className="flex items-center gap-2 text-gray-400">
-              <span className="font-medium">{result.totalStops} {t.stops}</span>
+            <div className="w-px h-6 bg-gray-300"></div>
+            <div className="flex items-center gap-2 text-gray-700">
+              <span className="font-semibold">{result.totalStops} {t.stops}</span>
             </div>
           </div>
         </div>
 
-        <div className="p-6 sm:p-8">
+        <div className="p-8">
           <div className="relative">
             {/* Vertical line connecting dots */}
-            <div className="absolute left-[11px] top-4 bottom-4 w-0.5 bg-white/10"></div>
+            <div className="absolute left-[11px] top-4 bottom-4 w-0.5 bg-gray-300"></div>
 
             <div className="space-y-6">
               {result.steps.map((step, index) => {
@@ -85,13 +85,13 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
                   
                   return (
                     <div key={`transfer-${index}`} className="relative flex items-center gap-6 pl-10">
-                      <div className="absolute left-0 w-6 h-6 rounded-full bg-[#0A0F2C] border-2 border-[#FFB300] flex items-center justify-center z-10">
+                      <div className="absolute left-0 w-6 h-6 rounded-full bg-white border-2 border-[#FFB300] flex items-center justify-center z-10">
                         <ArrowRight className="w-3 h-3 text-[#FFB300]" />
                       </div>
-                      <div className="bg-[#FFB300]/10 border border-[#FFB300]/20 rounded-lg px-4 py-2 w-full flex items-center gap-2">
-                        <span className="text-[#FFB300] font-medium text-sm">{t.transferAt} {prevName}</span>
-                        <span className="text-gray-400 text-sm mx-2">→</span>
-                        <span className={`text-sm font-semibold ${getLineTextColor(step.line)}`}>
+                      <div className="bg-amber-50 border-2 border-[#FFB300] rounded-lg px-4 py-3 w-full flex items-center gap-2">
+                        <span className="text-[#D99300] font-bold text-sm">{t.transferAt} {prevName}</span>
+                        <span className="text-gray-400 text-sm mx-1">→</span>
+                        <span className={`text-sm font-bold ${getLineTextColor(step.line)}`}>
                           {step.line === 'red' ? t.lineRed : step.line === 'green' ? t.lineGreen : t.linePurple}
                         </span>
                       </div>
@@ -101,9 +101,9 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
 
                 return (
                   <div key={`${step.stationId}-${index}`} className="relative flex items-center gap-6 pl-10">
-                    <div className={`absolute left-0 w-6 h-6 rounded-full border-4 border-[#0A0F2C] z-10 ${getLineColor(step.line)}`}></div>
+                    <div className={`absolute left-0 w-6 h-6 rounded-full border-4 border-white z-10 ${getLineColor(step.line)}`}></div>
                     <div className="flex-1 py-2">
-                      <h3 className={`text-lg font-medium ${step.type === 'start' || step.type === 'end' ? 'text-white font-bold' : 'text-gray-300'}`}>
+                      <h3 className={`text-lg font-medium ${step.type === 'start' || step.type === 'end' ? 'text-gray-900 font-bold' : 'text-gray-700'}`}>
                         {name}
                       </h3>
                       {(step.type === 'start' || step.type === 'end') && (
