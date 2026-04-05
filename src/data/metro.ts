@@ -36,47 +36,47 @@ export const stations: Station[] = [
   { id: '8noyabr', nameEn: '8 Noyabr', nameAz: '8 Noyabr', lines: ['purple'] },
 ];
 
-export const connections: [string, string, Line][] = [
+export const connections: [string, string, Line, number][] = [
   // Red Line
-  ['icherisheher', 'sahil', 'red'],
-  ['sahil', '28may', 'red'],
-  ['28may', 'ganjlik', 'red'],
-  ['ganjlik', 'nariman_narimanov', 'red'],
-  ['nariman_narimanov', 'ulduz', 'red'],
-  ['ulduz', 'koroglu', 'red'],
-  ['koroglu', 'gara_garayev', 'red'],
-  ['gara_garayev', 'neftchiler', 'red'],
-  ['neftchiler', 'xalqlar_dostlugu', 'red'],
-  ['xalqlar_dostlugu', 'ahmadli', 'red'],
-  ['ahmadli', 'hazi_aslanov', 'red'],
-  ['nariman_narimanov', 'bakmil', 'red'],
+  ['icherisheher', 'sahil', 'red', 2],
+  ['sahil', '28may', 'red', 1.5],
+  ['28may', 'ganjlik', 'red', 4],
+  ['ganjlik', 'nariman_narimanov', 'red', 3],
+  ['nariman_narimanov', 'ulduz', 'red', 4],
+  ['ulduz', 'koroglu', 'red', 4],
+  ['koroglu', 'gara_garayev', 'red', 2],
+  ['gara_garayev', 'neftchiler', 'red', 2],
+  ['neftchiler', 'xalqlar_dostlugu', 'red', 2.5],
+  ['xalqlar_dostlugu', 'ahmadli', 'red', 2],
+  ['ahmadli', 'hazi_aslanov', 'red', 2],
+  ['nariman_narimanov', 'bakmil', 'red', 2],
 
   // Green Line
-  ['darnagul', 'azadlig_prospekti', 'green'],
-  ['azadlig_prospekti', 'nasimi', 'green'],
-  ['nasimi', 'memar_ajami', 'green'],
-  ['memar_ajami', '20yanvar', 'green'],
-  ['20yanvar', 'inshaatchilar', 'green'],
-  ['inshaatchilar', 'elmler_akademiyasi', 'green'],
-  ['elmler_akademiyasi', 'nizami', 'green'],
-  ['nizami', '28may', 'green'],
-  ['28may', 'ganjlik', 'green'],
-  ['ganjlik', 'nariman_narimanov', 'green'],
-  ['nariman_narimanov', 'ulduz', 'green'],
-  ['ulduz', 'koroglu', 'green'],
-  ['koroglu', 'gara_garayev', 'green'],
-  ['gara_garayev', 'neftchiler', 'green'],
-  ['neftchiler', 'xalqlar_dostlugu', 'green'],
-  ['xalqlar_dostlugu', 'ahmadli', 'green'],
-  ['ahmadli', 'hazi_aslanov', 'green'],
+  ['darnagul', 'azadlig_prospekti', 'green', 3],
+  ['azadlig_prospekti', 'nasimi', 'green', 2],
+  ['nasimi', 'memar_ajami', 'green', 3],
+  ['memar_ajami', '20yanvar', 'green', 2],
+  ['20yanvar', 'inshaatchilar', 'green', 3],
+  ['inshaatchilar', 'elmler_akademiyasi', 'green', 4],
+  ['elmler_akademiyasi', 'nizami', 'green', 2],
+  ['nizami', '28may', 'green', 3],
+  ['28may', 'ganjlik', 'green', 4],
+  ['ganjlik', 'nariman_narimanov', 'green', 3],
+  ['nariman_narimanov', 'ulduz', 'green', 4],
+  ['ulduz', 'koroglu', 'green', 4],
+  ['koroglu', 'gara_garayev', 'green', 2],
+  ['gara_garayev', 'neftchiler', 'green', 2],
+  ['neftchiler', 'xalqlar_dostlugu', 'green', 2.5],
+  ['xalqlar_dostlugu', 'ahmadli', 'green', 2],
+  ['ahmadli', 'hazi_aslanov', 'green', 2],
   
   // Yellow Line (formerly Green Line Shuttle)
-  ['jafar_jabbarly', 'khatai', 'yellow'],
+  ['jafar_jabbarly', 'khatai', 'yellow', 4],
 
   // Purple Line
-  ['khojasan', 'avtovagzal', 'purple'],
-  ['avtovagzal', 'memar_ajami', 'purple'],
-  ['memar_ajami', '8noyabr', 'purple'],
+  ['khojasan', 'avtovagzal', 'purple', 7],
+  ['avtovagzal', 'memar_ajami', 'purple', 3.5],
+  ['memar_ajami', '8noyabr', 'purple', 2.5],
 ];
 
 export const transfers: [string, string][] = [
@@ -99,11 +99,11 @@ stations.forEach(station => {
   });
 });
 
-connections.forEach(([from, to, line]) => {
+connections.forEach(([from, to, line, time]) => {
   const fromNode = `${from}_${line}`;
   const toNode = `${to}_${line}`;
-  graph[fromNode].push({ to: toNode, weight: 2, type: 'travel', line });
-  graph[toNode].push({ to: fromNode, weight: 2, type: 'travel', line });
+  graph[fromNode].push({ to: toNode, weight: time, type: 'travel', line });
+  graph[toNode].push({ to: fromNode, weight: time, type: 'travel', line });
 });
 
 stations.forEach(station => {

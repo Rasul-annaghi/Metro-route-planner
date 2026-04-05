@@ -9,6 +9,17 @@ interface RouteResultProps {
   error: string | null;
 }
 
+const formatTime = (totalMinutes: number, t: any) => {
+  const mins = Math.floor(totalMinutes);
+  const secs = Math.round((totalMinutes - mins) * 60);
+
+  const parts = [];
+  if (mins > 0) parts.push(`${mins} ${t.minutes}`);
+  if (secs > 0) parts.push(`${secs} ${t.seconds}`);
+  
+  return parts.length > 0 ? parts.join(' ') : `0 ${t.minutes}`;
+};
+
 export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
   const { lang, t } = useLanguage();
 
@@ -60,7 +71,7 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
           <div className="flex items-center gap-4 bg-white px-6 py-3 rounded-lg border-2 border-[#1E90FF] shadow-sm">
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5 text-[#1E90FF]" />
-              <span className="text-gray-900 font-bold text-lg">{result.totalTime} {t.minutes}</span>
+              <span className="text-gray-900 font-bold text-lg">{formatTime(result.totalTime, t)}</span>
             </div>
             <div className="w-px h-6 bg-gray-300"></div>
             <div className="flex items-center gap-2 text-gray-700">
