@@ -36,6 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onRouteFound }) => {
   const redStations = stations.filter(s => s.lines.includes('red'));
   const greenStations = stations.filter(s => s.lines.includes('green') && !s.lines.includes('red'));
   const purpleStations = stations.filter(s => s.lines.includes('purple'));
+  const yellowStations = stations.filter(s => s.lines.includes('yellow'));
 
   const renderOptions = (group: typeof stations) => {
     return group.map(s => (
@@ -71,9 +72,10 @@ export const Hero: React.FC<HeroProps> = ({ onRouteFound }) => {
                 required
               >
                 <option value="" disabled className="text-gray-500">{t.selectStation}</option>
-                <optgroup label={t.lineRed}>{renderOptions(redStations)}</optgroup>
-                <optgroup label={t.lineGreen}>{renderOptions(greenStations)}</optgroup>
-                <optgroup label={t.linePurple}>{renderOptions(purpleStations)}</optgroup>
+                <optgroup label={t.lineRed} className="bg-red-500 text-white font-bold">{renderOptions(redStations)}</optgroup>
+                <optgroup label={t.lineGreen} className="bg-green-500 text-white font-bold">{renderOptions(greenStations)}</optgroup>
+                <optgroup label={t.linePurple} className="bg-purple-500 text-white font-bold">{renderOptions(purpleStations)}</optgroup>
+                <optgroup label={t.lineYellow} className="bg-yellow-400 text-black font-bold">{renderOptions(yellowStations)}</optgroup>
               </select>
               <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 pointer-events-none" />
             </div>
@@ -92,9 +94,10 @@ export const Hero: React.FC<HeroProps> = ({ onRouteFound }) => {
                 required
               >
                 <option value="" disabled className="text-gray-500">{t.selectStation}</option>
-                <optgroup label={t.lineRed}>{renderOptions(redStations)}</optgroup>
-                <optgroup label={t.lineGreen}>{renderOptions(greenStations)}</optgroup>
-                <optgroup label={t.linePurple}>{renderOptions(purpleStations)}</optgroup>
+                <optgroup label={t.lineRed} className="bg-red-500 text-white font-bold">{renderOptions(redStations)}</optgroup>
+                <optgroup label={t.lineGreen} className="bg-green-500 text-white font-bold">{renderOptions(greenStations)}</optgroup>
+                <optgroup label={t.linePurple} className="bg-purple-500 text-white font-bold">{renderOptions(purpleStations)}</optgroup>
+                <optgroup label={t.lineYellow} className="bg-yellow-400 text-black font-bold">{renderOptions(yellowStations)}</optgroup>
               </select>
               <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 pointer-events-none" />
             </div>

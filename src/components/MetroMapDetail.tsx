@@ -62,7 +62,7 @@ export const MetroMapDetail: React.FC = () => {
           </p>
           
           {/* Lines Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
             <div className="bg-white border-2 border-red-300 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-4 h-4 rounded-full bg-red-500"></div>
@@ -85,6 +85,14 @@ export const MetroMapDetail: React.FC = () => {
                 <h3 className="text-lg font-bold text-purple-600">{t.linePurple}</h3>
               </div>
               <p className="text-sm text-gray-600">{t.purpleLineDesc}</p>
+            </div>
+
+            <div className="bg-white border-2 border-yellow-300 rounded-xl p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-4 h-4 rounded-full bg-yellow-400"></div>
+                <h3 className="text-lg font-bold text-yellow-500">{t.lineYellow}</h3>
+              </div>
+              <p className="text-sm text-gray-600">{t.yellowLineDesc}</p>
             </div>
           </div>
         </div>

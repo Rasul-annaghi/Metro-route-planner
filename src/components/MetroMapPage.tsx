@@ -7,7 +7,7 @@ interface MetroMapPageProps {
 }
 
 export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
 
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -25,7 +25,7 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
       {/* Page Header */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-          Bakı Metropoliteni
+          {t.metroPageTitle}
         </h1>
         <div className="w-24 h-1 bg-[#1E90FF] rounded-full"></div>
       </div>
@@ -45,26 +45,15 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-8 sm:p-12 space-y-8">
           {/* Introduction */}
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Bakı metropoliteni Azərbaycanın paytaxtı Bakı şəhərində yeraltı xətləri birləşdirən nəqliyyat sistemidir. O, Türk, İslam ölkələri və Yaxın Şərqin ilk metro nəqliyyatıdır. Metropoliten ümumi uzunluğu 40.7 km olan 3 xətdən, 27 stansiyadan ibarətdir. Stansiyaların yeddisi böyük dərinlikdə yerləşir.
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            1966-cı ildə tərkibində hərəkət, hərəkət qatarları, yol və tunel qurğuları, sanitariya texnikası və elektromexanika, işarəvermə və rabitə, material-texniki təminat xidmətləri kimi 6 xidməti olan Bakı Metropoliteni İdarəsi yaradılır. 1967-ci il noyabrın 6-da Bakı şəhərində metropolitenin 5 stansiyası istismara verilir.
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Bakı metropoliteninin nadirliyi ondan ibarətdir ki, 60% və 40%-minlik mailliklər və kiçik radiuslu çox saylı əyrilər var.
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Metropolitenin daha bir özəlliyi Qırmızı və Yaşıl xətləri "28 May" stansiyasında bir müstəvidə birləşməsidir. Nəticədə, "28 May-Həzi Aslanov" və əksinə, qatarlar, faktiki olaraq, bir xətt üzrə hərəkətini davam etdirir.
-          </p>
+          <p className="text-gray-700 text-lg leading-relaxed">{t.metroPageIntro1}</p>
+          <p className="text-gray-700 text-lg leading-relaxed">{t.metroPageIntro2}</p>
+          <p className="text-gray-700 text-lg leading-relaxed">{t.metroPageIntro3}</p>
+          <p className="text-gray-700 text-lg leading-relaxed">{t.metroPageIntro4}</p>
 
           {/* Lines Section */}
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              {lang === 'az' ? 'Xətlər üzrə hərəkət belə təşkil edilir:' : 'Lines are organized as follows:'}
+              {t.linesOrganizedAs}
             </h2>
 
             <div className="space-y-6">
@@ -72,11 +61,20 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
               <div className="bg-white border-2 border-red-300 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-5 h-5 rounded-full bg-red-500"></div>
-                  <h3 className="text-xl font-bold text-red-600">Qırmızı</h3>
+                  <h3 className="text-xl font-bold text-red-600">{t.lineRed}</h3>
                 </div>
                 <ul className="text-gray-700 space-y-1 ml-8 list-disc">
-                  <li>"İçərişəhər — Həzi Aslanov"</li>
-                  <li>"İçərişəhər — Bakmil"</li>
+                  {lang === 'en' ? (
+                    <>
+                      <li>"Icherisheher — Hazi Aslanov"</li>
+                      <li>"Icherisheher — Bakmil"</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>"İçərişəhər — Həzi Aslanov"</li>
+                      <li>"İçərişəhər — Bakmil"</li>
+                    </>
+                  )}
                 </ul>
               </div>
 
@@ -84,12 +82,20 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
               <div className="bg-white border-2 border-green-300 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-5 h-5 rounded-full bg-green-500"></div>
-                  <h3 className="text-xl font-bold text-green-600">Yaşıl</h3>
+                  <h3 className="text-xl font-bold text-green-600">{t.lineGreen}</h3>
                 </div>
                 <ul className="text-gray-700 space-y-1 ml-8 list-disc">
-                  <li>"Dərnəgül — Həzi Aslanov"</li>
-                  <li>"Xətai — Cəfər Cabbarlı" <span className="text-gray-500 text-sm">(məkik hərəkət)</span></li>
-                  <li>"Dərnəgül — Bakmil"</li>
+                  {lang === 'en' ? (
+                    <>
+                      <li>"Darnagul — Hazi Aslanov"</li>
+                      <li>"Darnagul — Bakmil"</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>"Dərnəgül — Həzi Aslanov"</li>
+                      <li>"Dərnəgül — Bakmil"</li>
+                    </>
+                  )}
                 </ul>
               </div>
 
@@ -97,11 +103,35 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
               <div className="bg-white border-2 border-purple-300 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-5 h-5 rounded-full bg-purple-500"></div>
-                  <h3 className="text-xl font-bold text-purple-600">Bənövşəyi</h3>
+                  <h3 className="text-xl font-bold text-purple-600">{t.linePurple}</h3>
                 </div>
                 <ul className="text-gray-700 space-y-1 ml-8 list-disc">
-                  <li>"Avtovağzal — 8 Noyabr"</li>
-                  <li>"Xocəsən — 8 Noyabr"</li>
+                  {lang === 'en' ? (
+                    <>
+                      <li>"Avtovagzal — 8 Noyabr"</li>
+                      <li>"Khojasan — 8 Noyabr"</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>"Avtovağzal — 8 Noyabr"</li>
+                      <li>"Xocəsən — 8 Noyabr"</li>
+                    </>
+                  )}
+                </ul>
+              </div>
+
+              {/* Yellow Line */}
+              <div className="bg-white border-2 border-yellow-300 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-5 h-5 rounded-full bg-yellow-400"></div>
+                  <h3 className="text-xl font-bold text-yellow-500">{t.lineYellow}</h3>
+                </div>
+                <ul className="text-gray-700 space-y-1 ml-8 list-disc">
+                  {lang === 'en' ? (
+                    <li>"Khatai — Jafar Jabbarly" <span className="text-gray-500 text-sm">{t.shuttleText}</span></li>
+                  ) : (
+                    <li>"Xətai — Cəfər Cabbarlı" <span className="text-gray-500 text-sm">{t.shuttleText}</span></li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -110,7 +140,7 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
           {/* Transfers Section */}
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              {lang === 'az' ? 'Keçidlər' : 'Transfers'}
+              {t.transfers}
             </h2>
 
             <div className="space-y-4">
@@ -122,11 +152,11 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
                     <div className="w-4 h-4 rounded-full bg-red-500"></div>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900">
-                    Yaşıl və Qırmızı xətlər üzrə
+                    {t.transferGreenRed}
                   </h3>
                 </div>
                 <p className="text-gray-700 ml-8">
-                  ("Cəfər Cabbarlı — Xətai" mənzlinə): <strong>"28 May"</strong> və <strong>"Cəfər Cabbarlı"</strong> stansiyaları
+                  <span dangerouslySetInnerHTML={{ __html: t.transferGreenRedDesc }} />
                 </p>
               </div>
 
@@ -138,11 +168,11 @@ export const MetroMapPage: React.FC<MetroMapPageProps> = ({ onBack }) => {
                     <div className="w-4 h-4 rounded-full bg-purple-500"></div>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900">
-                    Yaşıl və Bənövşəyi xətlər üzrə
+                    {t.transferGreenPurple}
                   </h3>
                 </div>
                 <p className="text-gray-700 ml-8">
-                  <strong>"Memar Əcəmi"</strong> stansiyaları (hər xəttin keçid stansiyaları eyni adı daşıyır)
+                  <span dangerouslySetInnerHTML={{ __html: t.transferGreenPurpleDesc }} />
                 </p>
               </div>
             </div>

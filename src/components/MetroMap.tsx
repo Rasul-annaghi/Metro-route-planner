@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { stations, Line } from '../data/metro';
+import { stations, Line, transfers } from '../data/metro';
 
 export const MetroMap: React.FC = () => {
   const { lang, t } = useLanguage();
@@ -18,10 +18,14 @@ export const MetroMap: React.FC = () => {
           {lineStations.map(s => (
             <div 
               key={s.id} 
-              className={`px-4 py-2 rounded-lg text-sm font-medium border-2 transition-colors ${s.lines.length > 1 ? 'border-[#FFB300] bg-[#FFB300]/10 text-[#D99300] font-bold' : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'}`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium border-2 transition-colors ${
+                (s.lines.length > 1 || transfers.some(t => t.includes(s.id))) 
+                ? 'border-[#FFB300] bg-[#FFB300]/10 text-[#D99300] font-bold' 
+                : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+              }`}
             >
               {lang === 'en' ? s.nameEn : s.nameAz}
-              {s.lines.length > 1 && <span className="ml-2 text-xs">⇄</span>}
+              {(s.lines.length > 1 || transfers.some(t => t.includes(s.id))) && <span className="ml-2 text-xs">⇄</span>}
             </div>
           ))}
         </div>
@@ -40,15 +44,18 @@ export const MetroMap: React.FC = () => {
         {renderLine('red', t.lineRed, 'text-red-600', 'bg-red-500')}
         {renderLine('green', t.lineGreen, 'text-green-600', 'bg-green-500')}
         {renderLine('purple', t.linePurple, 'text-purple-600', 'bg-purple-500')}
+        {renderLine('yellow', t.lineYellow, 'text-yellow-600', 'bg-yellow-400')}
         
-        <div className="bg-blue-50 border-2 border-[#1E90FF] rounded-2xl p-8 flex flex-col justify-center items-center text-center">
-          <div className="w-12 h-12 rounded-full bg-[#FFB300]/20 flex items-center justify-center mb-4">
-            <span className="text-[#FFB300] text-xl">⇄</span>
+        <div className="md:col-span-2 flex justify-center mt-4">
+          <div className="w-full max-w-2xl bg-blue-50 border-2 border-[#1E90FF] rounded-2xl p-8 flex flex-col justify-center items-center text-center">
+            <div className="w-12 h-12 rounded-full bg-[#FFB300]/20 flex items-center justify-center mb-4">
+              <span className="text-[#FFB300] text-xl">⇄</span>
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">{t.transferStationsTitle}</h3>
+            <p className="text-sm text-gray-600">
+              {t.transferStationsDesc}
+            </p>
           </div>
-          <h3 className="text-lg font-bold text-gray-900 mb-2">{t.transferStationsTitle}</h3>
-          <p className="text-sm text-gray-600">
-            {t.transferStationsDesc}
-          </p>
         </div>
       </div>
     </section>

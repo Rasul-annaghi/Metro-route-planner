@@ -33,6 +33,7 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
       case 'red': return 'bg-red-500';
       case 'green': return 'bg-green-500';
       case 'purple': return 'bg-purple-500';
+      case 'yellow': return 'bg-yellow-400';
       default: return 'bg-gray-500';
     }
   };
@@ -42,6 +43,7 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
       case 'red': return 'text-red-600';
       case 'green': return 'text-green-600';
       case 'purple': return 'text-purple-600';
+      case 'yellow': return 'text-yellow-600';
       default: return 'text-gray-600';
     }
   };
@@ -92,7 +94,7 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
                         <span className="text-[#D99300] font-bold text-sm">{t.transferAt} {prevName}</span>
                         <span className="text-gray-400 text-sm mx-1">→</span>
                         <span className={`text-sm font-bold ${getLineTextColor(step.line)}`}>
-                          {step.line === 'red' ? t.lineRed : step.line === 'green' ? t.lineGreen : t.linePurple}
+                          {step.line === 'red' ? t.lineRed : step.line === 'green' ? t.lineGreen : step.line === 'yellow' ? t.lineYellow : t.linePurple}
                         </span>
                       </div>
                     </div>
@@ -108,7 +110,7 @@ export const RouteResult: React.FC<RouteResultProps> = ({ result, error }) => {
                       </h3>
                       {(step.type === 'start' || step.type === 'end') && (
                         <p className={`text-xs mt-1 ${getLineTextColor(step.line)}`}>
-                          {step.line === 'red' ? t.lineRed : step.line === 'green' ? t.lineGreen : t.linePurple}
+                          {step.line === 'red' ? t.lineRed : step.line === 'green' ? t.lineGreen : step.line === 'yellow' ? t.lineYellow : t.linePurple}
                         </p>
                       )}
                     </div>

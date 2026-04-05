@@ -1,4 +1,4 @@
-export type Line = 'red' | 'green' | 'purple';
+export type Line = 'red' | 'green' | 'purple' | 'yellow';
 
 export interface Station {
   id: string;
@@ -29,12 +29,11 @@ export const stations: Station[] = [
   { id: 'inshaatchilar', nameEn: 'Inshaatchilar', nameAz: 'İnşaatçılar', lines: ['green'] },
   { id: 'elmler_akademiyasi', nameEn: 'Elmler Akademiyasi', nameAz: 'Elmlər Akademiyası', lines: ['green'] },
   { id: 'nizami', nameEn: 'Nizami', nameAz: 'Nizami', lines: ['green'] },
-  { id: 'jafar_jabbarly', nameEn: 'Jafar Jabbarly', nameAz: 'Cəfər Cabbarlı', lines: ['green'] },
-  { id: 'khatai', nameEn: 'Khatai', nameAz: 'Xətai', lines: ['green'] },
+  { id: 'jafar_jabbarly', nameEn: 'Jafar Jabbarly', nameAz: 'Cəfər Cabbarlı', lines: ['yellow'] },
+  { id: 'khatai', nameEn: 'Khatai', nameAz: 'Xətai', lines: ['yellow'] },
   { id: 'khojasan', nameEn: 'Khojasan', nameAz: 'Xocəsən', lines: ['purple'] },
   { id: 'avtovagzal', nameEn: 'Avtovagzal', nameAz: 'Avtovağzal', lines: ['purple'] },
   { id: '8noyabr', nameEn: '8 Noyabr', nameAz: '8 Noyabr', lines: ['purple'] },
-  { id: 'b04', nameEn: 'B-04', nameAz: 'B-04', lines: ['purple'] },
 ];
 
 export const connections: [string, string, Line][] = [
@@ -71,14 +70,13 @@ export const connections: [string, string, Line][] = [
   ['xalqlar_dostlugu', 'ahmadli', 'green'],
   ['ahmadli', 'hazi_aslanov', 'green'],
   
-  // Green Line Shuttle
-  ['jafar_jabbarly', 'khatai', 'green'],
+  // Yellow Line (formerly Green Line Shuttle)
+  ['jafar_jabbarly', 'khatai', 'yellow'],
 
   // Purple Line
   ['khojasan', 'avtovagzal', 'purple'],
   ['avtovagzal', 'memar_ajami', 'purple'],
   ['memar_ajami', '8noyabr', 'purple'],
-  ['8noyabr', 'b04', 'purple'],
 ];
 
 export const transfers: [string, string][] = [
@@ -124,7 +122,7 @@ stations.forEach(station => {
 transfers.forEach(([st1, st2]) => {
   const st1NodeR = `${st1}_red`;
   const st1NodeG = `${st1}_green`;
-  const st2Node = `${st2}_green`;
+  const st2Node = `${st2}_yellow`;
   
   if (graph[st1NodeR] && graph[st2Node]) {
     graph[st1NodeR].push({ to: st2Node, weight: 3, type: 'transfer' });
