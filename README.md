@@ -1,20 +1,29 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🚇 Metro Route Planner
 
-# Run and deploy your AI Studio app
+A web-based application that helps commuters find the optimal route between metro stations using graph-based pathfinding algorithms.
 
-This contains everything you need to run your app locally.
+## 📌 Features
 
-View your app in AI Studio: https://ai.studio/apps/e829425a-adef-4efd-9444-a137ef12c5f0
+- Find the shortest route between any two metro stations
+- Display total distance or number of stops
+- Easy to extend with new stations and lines
 
-## Run Locally
+## 🛠️ Technologies Used
 
-**Prerequisites:**  Node.js
+- Node.js
+- Graph Data Structure
+- Dijkstra's Algorithm / BFS
 
+## 🚀 How to Run
+
+**Prerequisites:** Node.js
 
 1. Install dependencies:
-   `npm install`
+```bash
+   npm install
+```
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
-   `npm run dev`
+```bash
+   npm run dev
+```
