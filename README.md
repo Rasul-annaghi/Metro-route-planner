@@ -12,7 +12,7 @@ A web-based application that helps commuters find the optimal route between metr
 
 - Node.js
 - Graph Data Structure
-- Dijkstra's Algorithm / BFS (mention what you used)
+- Dijkstra's Algorithm / BFS
 
 ## 🚀 How to Run
 
